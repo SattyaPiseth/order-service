@@ -1,0 +1,21 @@
+version: '3.8'
+# database PostgreSQL version
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: order-service-db
+    environment:
+      POSTGRES_USER: pisethsattya
+      POSTGRES_PASSWORD: microservice
+      POSTGRES_DB: order-service
+    ports:
+      - "4444:5432"
+    volumes:
+      - order-service_data:/var/lib/postgresql/data
+    healthcheck: # Add health check
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d $POSTGRES_DB" ]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+volumes:
+  order-service_data:

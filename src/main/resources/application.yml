@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:4444/order-service
+    username: pisethsattya
+    password: microservice
+  jpa:
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8081
+
+inventory:
+  url: http://localhost:8082
